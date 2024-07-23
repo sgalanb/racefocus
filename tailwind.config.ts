@@ -1,8 +1,10 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
+import tailwindcssRadixColors from 'tailwindcss-radix-colors'
 
 const config: Config = {
-  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {},
-  plugins: [],
-};
-export default config;
+  plugins: [tailwindcssRadixColors],
+  darkMode: 'class',
+}
+export default config
