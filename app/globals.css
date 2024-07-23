@@ -1,4 +1,5 @@
 @layer tw_base, radix_ui, tw_components_utils;
+
 @import '@radix-ui/themes/styles.css' layer(radix_ui);
 
 @layer tw_base {
@@ -8,4 +9,8 @@
 @layer tw_components_utils {
   @tailwind components;
   @tailwind utilities;
+}
+
+.radix-themes {
+  --default-font-family: var(--font-roboto);
 }
