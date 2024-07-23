@@ -7,8 +7,8 @@ export default function Footer() {
       <Image
         src="/logotype.svg"
         alt="RaceFocus"
-        width={160}
-        height={150}
+        width={142.86}
+        height={30}
         className="dark:invert"
       />
       <Text size="2" weight="medium">

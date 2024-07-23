@@ -9,17 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@formatjs/intl-localematcher": "^0.5.4",
     "@radix-ui/themes": "^3.1.1",
+    "@supabase/ssr": "^0.4.0",
     "lucide-react": "^0.412.0",
-    "next": "15.0.0-canary.68",
+    "negotiator": "^0.6.3",
+    "next": "15.0.0-canary.77",
     "next-themes": "^0.3.0",
     "prettier": "^3.3.3",
     "prettier-plugin-organize-imports": "^4.0.0",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "react": "19.0.0-rc.0",
-    "react-dom": "19.0.0-rc.0"
+    "react": "19.0.0-rc-d025ddd3-20240722",
+    "react-dom": "19.0.0-rc-d025ddd3-20240722"
   },
   "devDependencies": {
+    "@types/negotiator": "^0.6.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
