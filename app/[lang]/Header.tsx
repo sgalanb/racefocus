@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation'
 export default function Header() {
   const pathname = usePathname()
   const rootPathname = pathname.split('/')[2]
-  console.log(rootPathname)
+
   return (
     <header
       className="flex w-full flex-col items-center gap-5 bg-indigo-3 px-4 pt-4 dark:bg-indigodark-3"
