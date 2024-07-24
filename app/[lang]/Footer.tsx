@@ -12,8 +12,8 @@ export default function Footer() {
         className="dark:invert"
       />
       <Text size="2" weight="regular">
-        This website is unofficial and is not associated in any way with
-        iRacing®. All assets belong to iRacing.com Motorsport Simulations LLC.
+        This website isn&apos;t associated in any way with iRacing®. All assets
+        belong to iRacing.com Motorsport Simulations LLC.
       </Text>
     </div>
   )
