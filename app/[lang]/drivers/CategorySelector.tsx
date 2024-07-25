@@ -6,25 +6,40 @@ import FormulaCarIcon from '@/app/components/icons/FormulaCarIcon'
 import OvalIcon from '@/app/components/icons/Oval'
 import SportsCarIcon from '@/app/components/icons/SportsCarIcon'
 import { RadioCards, Text } from '@radix-ui/themes'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 export default function CategorySelector({
   lang,
   category,
-  filter,
 }: {
   lang: string
   category: string
-  filter: string
 }) {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
   return (
     <RadioCards.Root
-      defaultValue={getCategory(category)}
-      columns={{ initial: '1', sm: '5' }}
+      defaultValue={category}
+      columns={{ initial: '2', sm: '5' }}
       onValueChange={(value) => {
-        window.location.href = `/${lang}/drivers?category=${value}${filter ? `&filter=${encodeURIComponent(filter)}` : ''}`
+        router.push(
+          `/${lang}/drivers/${value}${
+            searchParams.get('filter')
+              ? `?filter=${encodeURIComponent(searchParams.get('filter')!)}${
+                  searchParams.get('search')
+                    ? `&search=${encodeURIComponent(searchParams.get('search')!)}`
+                    : ''
+                }`
+              : searchParams.get('search')
+                ? `?search=${encodeURIComponent(searchParams.get('search')!)}`
+                : ''
+          }`
+        )
       }}
     >
-      <RadioCards.Item value="sports_cars">
+      <RadioCards.Item value="sports-cars">
         <div className="flex items-center justify-center gap-2.5">
           <SportsCarIcon className="w-5 fill-slate-12 dark:fill-slatedark-12" />
           <Text size="2" weight="medium">
@@ -32,7 +47,7 @@ export default function CategorySelector({
           </Text>
         </div>
       </RadioCards.Item>
-      <RadioCards.Item value="formula_cars">
+      <RadioCards.Item value="formula-cars">
         <div className="flex items-center justify-center gap-2.5">
           <FormulaCarIcon className="w-5 fill-slate-12 dark:fill-slatedark-12" />
           <Text size="2" weight="medium">
@@ -48,7 +63,7 @@ export default function CategorySelector({
           </Text>
         </div>
       </RadioCards.Item>
-      <RadioCards.Item value="dirt_oval">
+      <RadioCards.Item value="dirt-oval">
         <div className="flex items-center justify-center gap-2.5">
           <DirtOvalIcon className="w-5 fill-slate-12 dark:fill-slatedark-12" />
           <Text size="2" weight="medium">
@@ -56,7 +71,7 @@ export default function CategorySelector({
           </Text>
         </div>
       </RadioCards.Item>
-      <RadioCards.Item value="dirt_road">
+      <RadioCards.Item value="dirt-road">
         <div className="flex items-center justify-center gap-2.5">
           <DirtRoadIcon className="w-5 fill-slate-12 dark:fill-slatedark-12" />
           <Text size="2" weight="medium">
@@ -66,22 +81,4 @@ export default function CategorySelector({
       </RadioCards.Item>
     </RadioCards.Root>
   )
-}
-
-// Get the category from the URL param
-function getCategory(category: string) {
-  switch (category) {
-    case 'sports_cars':
-      return 'sports_cars'
-    case 'formula_cars':
-      return 'formula_cars'
-    case 'oval':
-      return 'oval'
-    case 'dirt_oval':
-      return 'dirt_oval'
-    case 'dirt_road':
-      return 'dirt_road'
-    default:
-      return 'sports_cars'
-  }
 }

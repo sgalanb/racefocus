@@ -47,10 +47,10 @@ export default function RootLayout({
           <Providers attribute="class" defaultTheme="system" enableSystem>
             <div className="flex w-full flex-col items-center">
               <div className="flex min-h-screen w-full flex-col items-center justify-start">
-                <Header />
+                <Header lang={lang} />
                 {children}
               </div>
-              <Footer />
+              <Footer lang={lang} />
             </div>
           </Providers>
         </Theme>

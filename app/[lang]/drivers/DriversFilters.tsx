@@ -1,22 +1,40 @@
 'use client'
 
-import { CLUB_NAMES, COUNTRIES } from '@/utils/constants'
+import { COUNTRIES } from '@/utils/constants'
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import { Select, TextField } from '@radix-ui/themes'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function DriversFilters({
   lang,
   category,
-  filter,
 }: {
   lang: string
   category: string
-  filter: string
 }) {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+
   return (
     <div className="flex w-full max-w-7xl items-center justify-between">
       <TextField.Root
         type="search"
+        defaultValue={searchParams.get('search') ?? ''}
+        onChange={(e) => {
+          router.push(
+            `/${lang}/drivers/${category ?? 'sports_cars'}${
+              searchParams.get('filter')
+                ? `?filter=${encodeURIComponent(searchParams.get('filter')!)}${
+                    e.target.value !== ''
+                      ? `&search=${encodeURIComponent(e.target.value)}`
+                      : ``
+                  }`
+                : e.target.value !== ''
+                  ? `?search=${encodeURIComponent(e.target.value)}`
+                  : ``
+            }`
+          )
+        }}
         placeholder={lang === 'en' ? 'Search drivers...' : 'Buscar pilotos...'}
         size="2"
         className="w-1/3"
@@ -29,38 +47,38 @@ export default function DriversFilters({
       <div className="flex items-center justify-center gap-3">
         <Select.Root
           size="2"
-          defaultValue={filter ? decodeURIComponent(filter) : 'all'}
+          defaultValue={
+            searchParams.get('filter')
+              ? decodeURIComponent(searchParams.get('filter')!)
+              : 'all'
+          }
           onValueChange={(value) => {
-            window.location.href = `/${lang}/drivers?category=${category ?? 'sports_cars'}&filter=${encodeURIComponent(value)}`
+            router.push(
+              `/${lang}/drivers/${category ?? 'sports_cars'}?filter=${encodeURIComponent(value)}${
+                searchParams.get('search')
+                  ? `&search=${encodeURIComponent(searchParams.get('search')!)}`
+                  : ''
+              }`
+            )
           }}
         >
           <Select.Trigger className="w-52" />
           <Select.Content>
             <Select.Item value="all">
-              {lang === 'en'
-                ? 'All clubs and countries'
-                : 'Todos los clubes y países'}
+              {lang === 'en' ? 'All countries' : 'Todos los países'}
             </Select.Item>
 
             <Select.Group>
-              <Select.Label>
-                {lang === 'en' ? 'Countries' : 'Países'}
-              </Select.Label>
-              {COUNTRIES.map((country) => (
+              {COUNTRIES.sort((a, b) =>
+                lang === 'en'
+                  ? a.country_name_en.localeCompare(b.country_name_en)
+                  : a.country_name_es.localeCompare(b.country_name_es)
+              ).map((country) => (
                 <Select.Item
                   key={country.country_code}
                   value={country.country_code}
                 >
-                  {`${country.flag} ${country.country_name}`}
-                </Select.Item>
-              ))}
-            </Select.Group>
-
-            <Select.Group>
-              <Select.Label>{lang === 'en' ? 'Clubs' : 'Clubes'}</Select.Label>
-              {CLUB_NAMES.map((club) => (
-                <Select.Item key={club} value={club}>
-                  {club}
+                  {`${country.flag} ${lang === 'en' ? country.country_name_en : country.country_name_es}`}
                 </Select.Item>
               ))}
             </Select.Group>

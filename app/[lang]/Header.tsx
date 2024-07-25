@@ -1,13 +1,16 @@
 'use client'
 
 import { ThemeToggle } from '@/app/components/ThemeToggle'
-import { TabNav } from '@radix-ui/themes'
+import { Select, TabNav } from '@radix-ui/themes'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-export default function Header() {
+export default function Header({ lang }: { lang: string }) {
+  const router = useRouter()
   const pathname = usePathname()
   const rootPathname = pathname.split('/')[2]
+  const pathnameWithoutLang = pathname.split('/').slice(2).join('/')
+  const searchParams = useSearchParams()
 
   return (
     <header
@@ -16,7 +19,7 @@ export default function Header() {
         boxShadow: 'inset 0 -1px 0 0 var(--gray-a5)',
       }}
     >
-      <div className="flex w-full max-w-7xl justify-start">
+      <div className="pointer-events-none flex w-full max-w-7xl select-none justify-start">
         <Image
           src="/logotype.svg"
           alt="RaceFocus"
@@ -27,21 +30,33 @@ export default function Header() {
       </div>
 
       <div className="flex w-full max-w-7xl items-center justify-between">
-        <TabNav.Root className="shadow-none">
-          <TabNav.Link href="/" active={!rootPathname}>
-            Home
-          </TabNav.Link>
-          <TabNav.Link href="/drivers" active={rootPathname === 'drivers'}>
-            Drivers
-          </TabNav.Link>
-          <TabNav.Link href="/cars" active={rootPathname === 'cars'}>
-            Cars
-          </TabNav.Link>
-          <TabNav.Link href="/tracks" active={rootPathname === 'tracks'}>
-            Tracks
+        <TabNav.Root>
+          <TabNav.Link
+            href={`/${lang}/drivers`}
+            active={rootPathname === 'drivers'}
+          >
+            {lang === 'en' ? 'Drivers' : 'Pilotos'}
           </TabNav.Link>
         </TabNav.Root>
-        <ThemeToggle />
+
+        <div className="flex gap-2.5">
+          <Select.Root
+            size="1"
+            defaultValue={lang}
+            onValueChange={(value) => {
+              router.push(
+                `/${value}/${pathnameWithoutLang}${searchParams ? `?${searchParams}` : ''}`
+              )
+            }}
+          >
+            <Select.Trigger variant="soft" />
+            <Select.Content>
+              <Select.Item value="en">English</Select.Item>
+              <Select.Item value="es">Español</Select.Item>
+            </Select.Content>
+          </Select.Root>
+          <ThemeToggle lang={lang} />
+        </div>
       </div>
     </header>
   )

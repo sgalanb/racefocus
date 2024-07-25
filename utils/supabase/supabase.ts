@@ -19,6 +19,7 @@ export type Database = {
           laps: number | null
           laps_lead: number | null
           license_letter: string | null
+          pos: number | null
           safety_rating: number | null
           starts: number | null
           wins: number | null
@@ -32,6 +33,7 @@ export type Database = {
           laps?: number | null
           laps_lead?: number | null
           license_letter?: string | null
+          pos?: number | null
           safety_rating?: number | null
           starts?: number | null
           wins?: number | null
@@ -45,6 +47,7 @@ export type Database = {
           laps?: number | null
           laps_lead?: number | null
           license_letter?: string | null
+          pos?: number | null
           safety_rating?: number | null
           starts?: number | null
           wins?: number | null
@@ -61,6 +64,7 @@ export type Database = {
           laps: number | null
           laps_lead: number | null
           license_letter: string | null
+          pos: number | null
           safety_rating: number | null
           starts: number | null
           wins: number | null
@@ -74,6 +78,7 @@ export type Database = {
           laps?: number | null
           laps_lead?: number | null
           license_letter?: string | null
+          pos?: number | null
           safety_rating?: number | null
           starts?: number | null
           wins?: number | null
@@ -87,6 +92,7 @@ export type Database = {
           laps?: number | null
           laps_lead?: number | null
           license_letter?: string | null
+          pos?: number | null
           safety_rating?: number | null
           starts?: number | null
           wins?: number | null
@@ -103,6 +109,7 @@ export type Database = {
           laps: number | null
           laps_lead: number | null
           license_letter: string | null
+          pos: number | null
           safety_rating: number | null
           starts: number | null
           wins: number | null
@@ -116,6 +123,7 @@ export type Database = {
           laps?: number | null
           laps_lead?: number | null
           license_letter?: string | null
+          pos?: number | null
           safety_rating?: number | null
           starts?: number | null
           wins?: number | null
@@ -129,6 +137,7 @@ export type Database = {
           laps?: number | null
           laps_lead?: number | null
           license_letter?: string | null
+          pos?: number | null
           safety_rating?: number | null
           starts?: number | null
           wins?: number | null
@@ -145,6 +154,7 @@ export type Database = {
           laps: number | null
           laps_lead: number | null
           license_letter: string | null
+          pos: number | null
           safety_rating: number | null
           starts: number | null
           wins: number | null
@@ -158,6 +168,7 @@ export type Database = {
           laps?: number | null
           laps_lead?: number | null
           license_letter?: string | null
+          pos?: number | null
           safety_rating?: number | null
           starts?: number | null
           wins?: number | null
@@ -171,6 +182,7 @@ export type Database = {
           laps?: number | null
           laps_lead?: number | null
           license_letter?: string | null
+          pos?: number | null
           safety_rating?: number | null
           starts?: number | null
           wins?: number | null
@@ -187,6 +199,7 @@ export type Database = {
           laps: number | null
           laps_lead: number | null
           license_letter: string | null
+          pos: number | null
           safety_rating: number | null
           starts: number | null
           wins: number | null
@@ -200,6 +213,7 @@ export type Database = {
           laps?: number | null
           laps_lead?: number | null
           license_letter?: string | null
+          pos?: number | null
           safety_rating?: number | null
           starts?: number | null
           wins?: number | null
@@ -213,6 +227,7 @@ export type Database = {
           laps?: number | null
           laps_lead?: number | null
           license_letter?: string | null
+          pos?: number | null
           safety_rating?: number | null
           starts?: number | null
           wins?: number | null
@@ -257,7 +272,101 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      search_dirt_oval_drivers_by_name_prefix: {
+        Args: {
+          prefix: string
+        }
+        Returns: {
+          club_name: string | null
+          country_code: string | null
+          driver_id: number
+          driver_name: string | null
+          irating: number | null
+          laps: number | null
+          laps_lead: number | null
+          license_letter: string | null
+          pos: number | null
+          safety_rating: number | null
+          starts: number | null
+          wins: number | null
+        }[]
+      }
+      search_dirt_road_drivers_by_name_prefix: {
+        Args: {
+          prefix: string
+        }
+        Returns: {
+          club_name: string | null
+          country_code: string | null
+          driver_id: number
+          driver_name: string | null
+          irating: number | null
+          laps: number | null
+          laps_lead: number | null
+          license_letter: string | null
+          pos: number | null
+          safety_rating: number | null
+          starts: number | null
+          wins: number | null
+        }[]
+      }
+      search_formula_cars_drivers_by_name_prefix: {
+        Args: {
+          prefix: string
+        }
+        Returns: {
+          club_name: string | null
+          country_code: string | null
+          driver_id: number
+          driver_name: string | null
+          irating: number | null
+          laps: number | null
+          laps_lead: number | null
+          license_letter: string | null
+          pos: number | null
+          safety_rating: number | null
+          starts: number | null
+          wins: number | null
+        }[]
+      }
+      search_oval_drivers_by_name_prefix: {
+        Args: {
+          prefix: string
+        }
+        Returns: {
+          club_name: string | null
+          country_code: string | null
+          driver_id: number
+          driver_name: string | null
+          irating: number | null
+          laps: number | null
+          laps_lead: number | null
+          license_letter: string | null
+          pos: number | null
+          safety_rating: number | null
+          starts: number | null
+          wins: number | null
+        }[]
+      }
+      search_sports_cars_drivers_by_name_prefix: {
+        Args: {
+          prefix: string
+        }
+        Returns: {
+          club_name: string | null
+          country_code: string | null
+          driver_id: number
+          driver_name: string | null
+          irating: number | null
+          laps: number | null
+          laps_lead: number | null
+          license_letter: string | null
+          pos: number | null
+          safety_rating: number | null
+          starts: number | null
+          wins: number | null
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
