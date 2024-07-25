@@ -18,6 +18,7 @@ import {
   Text,
   Tooltip,
 } from '@radix-ui/themes'
+import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -174,14 +175,17 @@ export default function DriversTable({
                               )?.country_name_es
                         }
                       >
-                        <span className="cursor-default">
-                          {
+                        <Image
+                          src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${
                             COUNTRIES.find(
                               (country) =>
                                 country.country_code === driver.country_code
-                            )?.flag
-                          }
-                        </span>
+                            )?.country_code
+                          }.svg`}
+                          height={14}
+                          width={14}
+                          alt="county flag"
+                        />
                       </Tooltip>
                       <Text size="2" color="gray">
                         -
