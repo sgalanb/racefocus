@@ -37,6 +37,12 @@ export default function Header({ lang }: { lang: string }) {
           >
             {lang === 'en' ? 'Drivers' : 'Pilotos'}
           </TabNav.Link>
+          <TabNav.Link
+            href={`/${lang}/about`}
+            active={rootPathname === 'about'}
+          >
+            {lang === 'en' ? 'About' : 'Acerca de'}
+          </TabNav.Link>
         </TabNav.Root>
 
         <div className="flex gap-2.5">
