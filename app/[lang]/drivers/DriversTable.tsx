@@ -295,7 +295,7 @@ export default function DriversTable({
           variant="soft"
           onClick={handleLoadMore}
           disabled={isLoadingMore}
-          className="w-24"
+          className="w-28"
         >
           {isLoadingMore ? (
             <div>
