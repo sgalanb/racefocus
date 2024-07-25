@@ -3,6 +3,7 @@
 import { COUNTRIES } from '@/utils/constants'
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import { Select, TextField } from '@radix-ui/themes'
+import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function DriversFilters({
@@ -78,7 +79,17 @@ export default function DriversFilters({
                   key={country.country_code}
                   value={country.country_code}
                 >
-                  {`${country.flag} ${lang === 'en' ? country.country_name_en : country.country_name_es}`}
+                  <div className="flex gap-2.5">
+                    <Image
+                      src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${
+                        country.country_code
+                      }.svg`}
+                      height={14}
+                      width={14}
+                      alt="county flag"
+                    />
+                    {`${lang === 'en' ? country.country_name_en : country.country_name_es}`}
+                  </div>
                 </Select.Item>
               ))}
             </Select.Group>
