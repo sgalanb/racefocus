@@ -9,7 +9,15 @@ import { COUNTRIES, LICENSES } from '@/utils/constants'
 import { addOrdinalSuffix } from '@/utils/functions'
 import { createClient } from '@/utils/supabase/client'
 import { Tables } from '@/utils/supabase/supabase'
-import { Badge, Button, Skeleton, Spinner, Table, Text } from '@radix-ui/themes'
+import {
+  Badge,
+  Button,
+  Skeleton,
+  Spinner,
+  Table,
+  Text,
+  Tooltip,
+} from '@radix-ui/themes'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -144,14 +152,29 @@ export default function DriversTable({
                       {driver.driver_name}
                     </Text>
                     <div className="flex items-center justify-start gap-1">
-                      <span>
-                        {
-                          COUNTRIES.find(
-                            (country) =>
-                              country.country_code === driver.country_code
-                          )?.flag
+                      <Tooltip
+                        side="left"
+                        content={
+                          lang === 'en'
+                            ? COUNTRIES.find(
+                                (country) =>
+                                  country.country_code === driver.country_code
+                              )?.country_name_en
+                            : COUNTRIES.find(
+                                (country) =>
+                                  country.country_code === driver.country_code
+                              )?.country_name_es
                         }
-                      </span>
+                      >
+                        <span className="cursor-default">
+                          {
+                            COUNTRIES.find(
+                              (country) =>
+                                country.country_code === driver.country_code
+                            )?.flag
+                          }
+                        </span>
+                      </Tooltip>
                       <Text size="2" color="gray">
                         -
                       </Text>
