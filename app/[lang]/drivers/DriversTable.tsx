@@ -29,9 +29,16 @@ export default function DriversTable({
   category: string
 }) {
   const searchParams = useSearchParams()
-  const categoryTable = getCategoryTable(category)
 
-  const [drivers, setDrivers] = useState<Tables<typeof categoryTable>[]>([])
+  const [drivers, setDrivers] = useState<
+    Tables<
+      | 'driver-stats-sports_car'
+      | 'driver-stats-formula_car'
+      | 'driver-stats-oval'
+      | 'driver-stats-dirt_oval'
+      | 'driver-stats-dirt_road'
+    >[]
+  >([])
   const [offset, setOffset] = useState(0)
   const [isInitialLoading, setIsInitialLoading] = useState(true)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
@@ -50,6 +57,7 @@ export default function DriversTable({
   }, [category, search, filter])
 
   async function fetchDrivers(currentOffset: number) {
+    const categoryTable = getCategoryTable(category)
     const db = createClient()
     const hasFilter =
       !filter ||
@@ -319,15 +327,15 @@ function getRpcFunctionName(category: string) {
 
 function getCategoryTable(category: string) {
   switch (category) {
-    case 'sports_cars':
+    case 'sports-cars':
       return 'driver-stats-sports_car'
-    case 'formula_cars':
+    case 'formula-cars':
       return 'driver-stats-formula_car'
     case 'oval':
       return 'driver-stats-oval'
-    case 'dirt_oval':
+    case 'dirt-oval':
       return 'driver-stats-dirt_oval'
-    case 'dirt_road':
+    case 'dirt-road':
       return 'driver-stats-dirt_road'
     default:
       return 'driver-stats-sports_car'
