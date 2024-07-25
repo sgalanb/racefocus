@@ -16,6 +16,10 @@ export async function generateMetadata({
       lang === 'en'
         ? 'RaceFocus - iRacing Companion App'
         : 'RaceFocus - Todo sobre iRacing',
+    description:
+      lang === 'en'
+        ? 'Tools and info to manage your iRacing career. We want to handle everything outside the sim so you can focus on what really matters, racing.'
+        : 'Herramientas e información para gestionar tu progreso en iRacing.',
   }
 }
 
