@@ -1,6 +1,7 @@
 import Footer from '@/app/[lang]/Footer'
 import Header from '@/app/[lang]/Header'
 import { Providers } from '@/app/providers'
+import { Analytics } from '@vercel/analytics/react'
 import { Roboto } from 'next/font/google'
 
 import { Theme } from '@radix-ui/themes'
@@ -58,6 +59,7 @@ export default function RootLayout({
             </div>
           </Providers>
         </Theme>
+        <Analytics />
       </body>
     </html>
   )
