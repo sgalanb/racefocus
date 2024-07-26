@@ -1,5 +1,6 @@
 import Drivers from '@/app/[lang]/drivers/Drivers'
 import { COUNTRIES } from '@/utils/constants'
+import { Metadata } from 'next'
 
 export async function generateMetadata({
   params: { lang },
@@ -22,7 +23,7 @@ export async function generateMetadata({
       : lang === 'en'
         ? `See the iRating Leaderboard for Sports Cars drivers on RaceFocus, the iRacing Companion App.`
         : `Consulta el Ranking de iRating de Deportivos en RaceFocus.`,
-  }
+  } as Metadata
 }
 
 export default function SportsCarsPage({

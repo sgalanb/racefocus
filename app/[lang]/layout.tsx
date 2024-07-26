@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { Roboto } from 'next/font/google'
 
 import { Theme } from '@radix-ui/themes'
+import { Metadata } from 'next'
 import '../globals.css'
 
 export async function generateMetadata({
@@ -21,7 +22,13 @@ export async function generateMetadata({
       lang === 'en'
         ? 'Tools and info to manage your iRacing career. We want to handle everything outside the sim so you can focus on what really matters, racing.'
         : 'Herramientas e información para gestionar tu progreso en iRacing.',
-  }
+    openGraph: {
+      siteName: 'RaceFocus',
+    },
+    twitter: {
+      creator: '@sgalanb',
+    },
+  } as Metadata
 }
 
 const roboto = Roboto({

@@ -1,5 +1,6 @@
 import Drivers from '@/app/[lang]/drivers/Drivers'
 import { COUNTRIES } from '@/utils/constants'
+import { Metadata } from 'next'
 
 export async function generateMetadata({
   params: { lang },
@@ -22,7 +23,7 @@ export async function generateMetadata({
       : lang === 'en'
         ? `See the iRating Leaderboard for Oval drivers on RaceFocus, the iRacing Companion App.`
         : `Consulta el Ranking de iRating de Óvalos en RaceFocus.`,
-  }
+  } as Metadata
 }
 
 export default function OvalPage({

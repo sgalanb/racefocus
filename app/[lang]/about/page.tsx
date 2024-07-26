@@ -1,4 +1,5 @@
 import { Heading, Text } from '@radix-ui/themes'
+import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -9,7 +10,7 @@ export async function generateMetadata({
 }) {
   return {
     title: lang === 'en' ? 'About | RaceFocus' : 'Acerca de | RaceFocus',
-  }
+  } as Metadata
 }
 
 export default function About({
@@ -33,8 +34,8 @@ export default function About({
       <div className="flex w-full max-w-7xl flex-col items-start justify-center gap-2.5">
         <Text size="4" className="max-w-prose text-balance">
           {lang === 'en'
-            ? `Race Focus is a work in progress companion web app for iRacing. The long term vision is to handle everything outside the sim so you can focus on what really matters, racing.`
-            : ` Race Focus es una web app en desarrollo, complementaria a iRacing. La visión a largo plazo es manejar toda la información importante fuera del simulador para que puedas enfocarte en lo que realmente importa, correr.`}
+            ? `RaceFocus is a work in progress companion web app for iRacing. The long term vision is to handle everything outside the sim so you can focus on what really matters, racing.`
+            : ` RaceFocus es una web app en desarrollo, complementaria a iRacing. La visión a largo plazo es manejar toda la información importante fuera del simulador para que puedas enfocarte en lo que realmente importa, correr.`}
         </Text>
         {lang === 'en' ? (
           <Text size="4" className="max-w-prose text-balance">
