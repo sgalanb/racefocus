@@ -1,6 +1,5 @@
 import { Heading, Text } from '@radix-ui/themes'
 import { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 
 export async function generateMetadata({
@@ -63,16 +62,9 @@ export default function About({
           </Text>
         )}
         <div className="mt-10 flex items-center justify-start gap-2.5">
-          <Image
-            src="/signature.png"
-            alt="RaceFocus"
-            width={72}
-            height={72}
-            className="dark:invert"
-          />
           <Text size="2" weight="medium">
             <Link
-              href="https://www.linkedin.com/in/sgalanb/"
+              href="https://santigalan.com"
               className="underline-offset-2 hover:underline"
               target="_blank"
             >

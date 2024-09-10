@@ -134,11 +134,18 @@ export default function DriversTable({
               .fill(0)
               .map((_, index) => <SkeletonRow key={index} />)
           ) : drivers.length > 0 ? (
-            drivers.map((driver) => (
+            drivers.map((driver, index) => (
               <Table.Row key={driver.driver_id}>
                 {/* Pos */}
                 <Table.Cell>
                   <div className="flex h-full w-full items-center justify-start">
+                    {(filter || search) && (
+                      <Text size="2">
+                        {lang === 'en'
+                          ? addOrdinalSuffix(index + 1) + ' / '
+                          : `${(index + 1).toLocaleString()}º `}
+                      </Text>
+                    )}
                     <Text size="2">
                       {`
                     ${lang === 'en' && driver.pos ? addOrdinalSuffix(driver.pos) : driver?.pos?.toLocaleString() + 'º'}
