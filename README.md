@@ -6,5 +6,5 @@
 </a>
 
 <p align="center">
-  Tools and info to manage your iRacing career. We want to handle everything outside the sim so you can focus on what really matters, racing.
+  Tools and info to manage your iRacing career.
 </p>
